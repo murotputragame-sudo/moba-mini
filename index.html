@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mini MOBA Demo</title>
+  <style>
+    body { margin: 0; background: #222; color: white; font-family: sans-serif; text-align: center; }
+    canvas { background: #333; display: block; margin: 20px auto; border: 2px solid white; }
+    #controls { margin-top: 10px; }
+    button { padding: 10px; margin: 5px; font-size: 16px; border-radius: 8px; }
+  </style>
+</head>
+<body>
+  <h2>Mini MOBA Demo</h2>
+  <canvas id="gameCanvas" width="300" height="400"></canvas>
+  <div id="controls">
+    <button onclick="move('up')">⬆️</button><br/>
+    <button onclick="move('left')">⬅️</button>
+    <button onclick="move('down')">⬇️</button>
+    <button onclick="move('right')">➡️</button>
+  </div>
+  <script>
+    const canvas = document.getElementById('gameCanvas');
+    const ctx = canvas.getContext('2d');
+    let player = { x: 140, y: 180, size: 20 };
+
+    function draw(){
+      ctx.clearRect(0,0,canvas.width,canvas.height);
+      ctx.fillStyle = "cyan";
+      ctx.fillRect(player.x, player.y, player.size, player.size);
+    }
+
+    function move(dir){
+      if(dir==='up') player.y -= 10;
+      if(dir==='down') player.y += 10;
+      if(dir==='left') player.x -= 10;
+      if(dir==='right') player.x += 10;
+      draw();
+    }
+
+    draw();
+  </script>
+</body>
+  </html>
